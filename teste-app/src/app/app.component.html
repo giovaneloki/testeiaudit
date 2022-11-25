@@ -1,0 +1,503 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #dbe3eb;
+    color: #1c2949;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  svg#rocket {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: -24px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  .terminal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(58, 58, 58);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+  }
+
+  .github-star-badge:hover {
+    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+    border-color: rgba(27,31,35,.35);
+    background-position: -.5em;
+  }
+
+  .github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="80"
+    alt="Logo"
+    src="https://www.iaudit.com.br/wp-content/themes/beatz-understrap-master/img/iaudit%20imagens/1%20-%20home/iadit%20tecnologia.svg"
+  />
+  <span>Cadastro de Pessoas</span>
+</div>
+
+<div class="content" role="main">
+
+  <!-- Resources -->
+  <div class="card-container">
+    <button class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial" (click)="carregarPessoas()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="groups"></mat-icon>
+      <span style="margin-left: 10px;">Pessoas</span>
+    </button>
+    <button class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial" (click)="incluirPessoa()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_add"></mat-icon>
+      <span style="margin-left: 10px;">Adicionar Pessoa</span>
+    </button>    
+  </div>
+
+  <section class="example-container mat-elevation-z8" tabindex="0" [hidden]="!isListagem">
+    <h3>Pessoas</h3>
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="Nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Documento">
+        <th mat-header-cell *matHeaderCellDef> Documento </th>
+        <td mat-cell *matCellDef="let element"> {{element.document}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Telefone">
+        <th mat-header-cell *matHeaderCellDef> Telefone </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="DataAniversario">
+        <th mat-header-cell *matHeaderCellDef> Data de Aniversário </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateBirthday | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Ações">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> 
+
+          <button mat-mini-fab color="primary" aria-label="Alterar" (click)="alterarIncluirPessoa(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          &nbsp;
+          <button mat-mini-fab color="primary" aria-label="Excluir" (click)="removerPessoa(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
+
+  <section class="example-container mat-elevation-z8" tabindex="0" [hidden]="isListagem">
+    <h3 [hidden]="!isNovaPessoa">Cadastrar nova pessoa</h3>
+    <h3 [hidden]="isNovaPessoa">Alterar pessoa</h3>
+    
+    <form [formGroup]="formPerson"(ngSubmit)="onFormSubmit()">  
+      <table>  
+        <tr>  
+          <td class="tbl1">  
+            <mat-form-field class="demo-full-width">  
+              <input formControlName="Nome" matTooltip="Informe o nome" matInput placeholder="Nome">  
+            </mat-form-field>  
+            <mat-error>  
+              <span *ngIf="!formPerson.get('Nome').value && formPerson.get('Nome').touched"></span>  
+            </mat-error>  
+          </td>  
+         
+          <td class="tbl1">  
+            <mat-form-field class="demo-full-width">  
+              <input formControlName="Documento" matTooltip="Informe numero do documento" matInput placeholder="Documento">  
+            </mat-form-field>  
+            <mat-error>  
+              <span *ngIf="!formPerson.get('Documento').value && formPerson.get('Documento').touched"></span>  
+            </mat-error>  
+          </td>
+          
+          <td class="tbl1">  
+            <mat-form-field class="demo-full-width">  
+              <input formControlName="Telefone" matTooltip="Informe numero do telefone" matInput placeholder="Telefone">  
+            </mat-form-field>  
+            <mat-error>  
+              <span *ngIf="!formPerson.get('Telefone').value && formPerson.get('Telefone').touched"></span>  
+            </mat-error>  
+          </td>
+
+          <td class="tbl1">  
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>Data de Aniversário</mat-label>
+              <input matInput [matDatepicker]="datepicker" formControlName="DataAniversario">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+            <!-- <mat-form-field class="demo-full-width">  
+              <input formControlName="DataAniversario" matTooltip="Informe a data de aniversário" matInput [matDatepicker]="picker" placeholder="Data de aniversário">  
+            </mat-form-field>   -->
+            <mat-error>  
+              <span *ngIf="!formPerson.get('DataAniversario').value && formPerson.get('DataAniversario').touched"></span>  
+            </mat-error>  
+          </td>
+        </tr>  
+
+        <tr>  
+          <td></td>  
+          <td></td>  
+          <td></td>  
+          <td  class="content-center">  
+            <button type="submit" mat-raised-button color="primary"matTooltip="Clique no botão Enviar"[disabled]="!formPerson.valid" >Enviar</button>      
+            &nbsp;&nbsp;
+            <button [hidden]="!isNovaPessoa" type="reset" mat-raised-button color="accent"matTooltip="Clique no botão Resetar" (click)="resetForm()">Resetar</button>  
+          </td>  
+          <td> 
+          </td>  
+        </tr>  
+      </table>  
+    </form>  
+
+    <article [hidden]="isNovaPessoa">
+      <h4>Endereços </h4>
+
+      <article class="table-header">
+        <button color="primary" mat-raised-button (click)="addRow()">Novo Endereço</button>
+      </article>
+      <table mat-table [dataSource]="dataSourceAddress">
+        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ col.label }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+              <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                <button mat-button (click)="element.isEdit = !element.isEdit">
+                  Editar
+                </button>
+                <button mat-button (click)="removerEndereco(element)">
+                  Excluir
+                </button>
+              </div>
+              <span *ngSwitchDefault>
+                {{ element[col.key] }}
+              </span>
+            </div>
+            <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+              <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                <button mat-button (click)="salvarAlteracoesEndereco(element); element.isEdit = !element.isEdit">Done</button>
+              </div>
+              <mat-form-field *ngSwitchCase="'date'" appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="element[col.key]" />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field *ngSwitchDefault>
+                <input [type]="col.type" matInput [(ngModel)]="element[col.key]" />
+              </mat-form-field>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnss"></tr>
+      </table>
+    </article>
+  </section>
+</div>
